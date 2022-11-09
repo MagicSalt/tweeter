@@ -15,11 +15,27 @@ html {
  */
 
 body {
+  display: flex;
+  height: 100vw;
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
+  font-family: 'Source Sans Pro', sans-serif;
+  margin-top: 120px;
+  padding-top: 400px
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+ 
+main {
+  display: flex;
+  width: 90%;
+  align-items: center;
+  flex-direction: column;
+  color: #545149;
+  position: relative;
+  height: 300px;
+  margin-left: auto;
+}
