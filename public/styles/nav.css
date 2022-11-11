@@ -6,7 +6,8 @@ nav {
   display: flex;
   height: 120px;
   width: 100%;
-  background-color: #4056A1;
+  background-color:#dbb1af;
+  background-image: url("https://www.transparenttextures.com/patterns/foggy-birds.png");
   color: #FFFFFF;
   padding: 1.5em;
   justify-content: space-between;

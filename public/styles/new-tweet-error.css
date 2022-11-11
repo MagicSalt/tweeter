@@ -1,0 +1,21 @@
+#new-tweet-error {
+  display: none;
+}
+
+.error-container {
+  align-items: center;
+  justify-content: flex-start;
+  border: 2px double red;
+  height: 2em;
+  width: 80%;
+  margin: 1em 10%;
+  padding: 1.5em;
+}
+.error-container i {
+  font-size: 1.5em;
+  margin: 0.25em 2em .25em 1em;
+}
+
+.error-container p {
+  font-weight: 600;
+}
