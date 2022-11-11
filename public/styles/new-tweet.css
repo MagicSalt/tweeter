@@ -1,10 +1,16 @@
 .new-tweet {
-  width: 60%;
-  margin: 0.5em;
+  display: flex;
+  width: 90%;
+  padding: 0.5em;
+  margin: auto;
+  margin-bottom: 2em;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
   font-weight: 600;
 }
 
-button {
+.submit-and-display button {
   border: none;
   font-size: medium;
   font-family: "Bungee";
@@ -20,15 +26,22 @@ button {
   margin-top: 5px;
 }
 
+label {
+  font-size: smaller;
+}
+
 textarea {
   outline: none;
+  overflow: hidden;
+  display: block;
+  resize: none;
   border: none;
   border-bottom: solid;
-  background-color: transparent;
+  background-color: #f4f1ec;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 17px;
   font-weight: 600;
-  margin-top: 1em;
+  margin-top: 5px;
   height: 30px;
   width: 100%;
 }

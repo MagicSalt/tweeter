@@ -1,16 +1,15 @@
-header {
+header.head {
   height: 400px;
-  position: absolute;
   width: 100%;
   top: 120px;
   background-color:#dbb1af;
-  background-image: url("https://www.transparenttextures.com/patterns/foggy-birds.png");
-  background-repeat: repeat;
+  background-image: url("https://www.transparenttextures.com/patterns/foggy-birds.png");;
 }
 
 .avatar {
   display: flex;
   justify-content: center;
+  margin-top: 1em;
 }
 
 .avatar-name {

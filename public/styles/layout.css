@@ -15,27 +15,36 @@ html {
  */
 
 body {
-  display: flex;
-  height: 100vw;
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
-  margin-top: 120px;
-  padding-top: 400px
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
- 
-main {
-  display: flex;
-  width: 90%;
-  align-items: center;
-  flex-direction: column;
-  color: #545149;
-  position: relative;
-  height: 300px;
+
+#tweet-container {
   margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.5em;
+  width: 90%;
+}
+
+main.container {
+  width: 90%;
+  height: auto;
+  margin: 1em 5% 0 5%;
+}
+
+.flex-container-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-container-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

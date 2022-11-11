@@ -7,7 +7,7 @@
     <!-- External CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
-
+    
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
@@ -15,12 +15,14 @@
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
     <link rel="stylesheet" href="/styles/tweet.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet-error.css" type="text/css" />\
-
+    <link rel="stylesheet" href="/styles/media-queries.css" type="text/css"/>
+    
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/bec24fd954.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
+    
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
@@ -30,13 +32,13 @@
     <!-- Top nav bar (fixed) -->
     <nav>
       <span class="logo">TWEETER</span>
-      <div class="nav-right">
+      <div id="compose-tweet-btn" class="nav-right">
         <p><strong>Write</strong> a new tweet</p>
-        <i class="fa-solid fa-angles-down icon"></i>
+        <i class="fa-solid fa-angles-down red-text"></i>
       </div>
     </nav>
 
-    <header>
+    <header class="head">
       <div class="avatar">
           <img src="/images/profile-hex.png"> 
       </div>
@@ -48,15 +50,15 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
-      <section class="new-tweet">
+      <section id="new-tweet-form" class="new-tweet">
         <section id="new-tweet-error">
           <div class="error container flex-container-row">
             <i class="text-red fas fa-exclamation-circle"></i>
             <p id="'new-tweet-err-msg" class="text-red"></p>
           </div>
         </section>
-        <h2>Compose Tweet</h2>
-        <form action="/tweets" method="POST">
+
+        <form action="/tweets/" method="POST">
           <label class="tweet-label" for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
           <div class="submit-and-display">
@@ -66,8 +68,9 @@
         </form>
       </section>
 
-      <div class="tweet-containter"></div>
-
+      <section id="tweet-container">
+      </section>
+      </div>
     </main>
   </body>
 </html>

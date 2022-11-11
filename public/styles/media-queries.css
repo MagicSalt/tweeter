@@ -1,0 +1,55 @@
+@media screen and (min-width: 1024px) {
+  body {
+    display: flex;
+  }
+  span.logo {
+    margin-left: 40px
+  }
+  header.head {
+    max-height: 700px;
+    margin-top: 8em;
+    margin-left: 2em;
+    background-color: #dbb1af;
+  }
+
+  main.container {
+    margin-top: 180px;
+    width: 60%;
+  } 
+  div.error-container {
+    width: 90%;
+    margin: 0 5%;
+    font-size: 0.75em;
+  }
+  nav {
+    z-index: 999;
+  }
+  article.tweet {
+    margin-right: 20px;
+  }
+}
+
+@media screen and (min-width: 2500px) {
+  body {
+    margin: 120px 10% 0;
+  }
+
+  header.head {
+    max-width: 850px;
+  }
+
+  article.tweet {
+    max-width: 1200px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  header.head {
+    margin: 0;
+    padding-top: 3.5em;
+    height: 500px;
+  }
+  div.avatar {
+    margin-top: 2em;
+  }
+}
