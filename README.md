@@ -16,3 +16,8 @@ This repository is the starter code for the project: Students will fork and clon
 
 - Express
 - Node 5.10.x or above
+
+## Screenshots
+
+!['Screenshot of Main Display on a Desktop'](https://github.com/MagicSalt/tweeter/blob/master/docs/tweeter-main-page-desktop.png)
+!['Screenshot of Main display on a Mobile Phone'](https://github.com/MagicSalt/tweeter/blob/master/docs/tweeter-main-page-mobile.png)
