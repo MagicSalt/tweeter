@@ -14,8 +14,10 @@
   border: none;
   font-size: medium;
   font-family: "Bungee";
-  background-color:#dbb1af;
+  background-color: #dbb1af;
   color: #ffffff;
+  margin-top: 0.2em;
+  margin-bottom: 0.5em;
 }
 
 .submit-and-display {
@@ -30,22 +32,28 @@ label {
   font-size: smaller;
 }
 
-textarea {
+.counter {
+  display: flex;
+  margin: 0.5em;
+}
+
+#tweet-text:focus-visible {
   outline: none;
-  overflow: hidden;
+}
+
+#tweet-text {
   display: block;
-  resize: none;
+  background: none;
+  height: 1.5em;
+  line-height: 0.9em;
+  margin: 0.75em 0 1em 0;
+  padding: 0 0 10px 0;
   border: none;
-  border-bottom: solid;
-  background-color: #f4f1ec;
+  border-bottom: solid black 2px;
+  width: 100%;
+  resize: none;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 17px;
   font-weight: 600;
   margin-top: 5px;
-  height: 30px;
-  width: 100%;
-}
-
-.red-text {
-  color: red;
 }

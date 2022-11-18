@@ -4,20 +4,9 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
 */
 
-const renderTweets = function(data) {
-for (let i = data.length - 1; i >= 0; i--) {
-  const newTweet = createTweetElement(data[i]);
-  $('#tweet-container').append(newTweet);
-  }
-};
-
-const renderTweet = (data) => {
-  const newTweet = createTweetElement(data);
-  $('#tweets-container').prepend(newTweet);
-};
-
+// Creating a new tweet
 const createTweetElement = (data) => {
-  const newTweet = `
+  let newTweet = (`
                     <article class="tweet">
                     <header class="flex-container-row">
                       <div class="profile-pic-username flex-container-row">
@@ -38,35 +27,48 @@ const createTweetElement = (data) => {
                       </div>
                     </footer>
                     </article>
-                    `;
+                    `);
   return newTweet;
 };
 
-const loadTweet = () => {
-  $.get('/tweets/').then((data) => {
-    renderTweets(data);
-    $('#tweet-text').val('');
-  });
+// Prepends array of tweets to the tweet-container section
+const renderTweets = (data) => {
+
+  // Emptying the tweet container so there are no duplicate tweets
+  $('#tweet-container').empty();
+  for (let tweet of data) {
+    $('#tweet-container').prepend(createTweetElement(tweet));
+  }
 };
 
-const loadNewTweet = () => {
-  $.get('/tweets/').then((data) => {
-    renderTweet(data[data.length - 1]);
-    $('#tweet-text').val('');
-    $('output.counter').val(140);
-  });
+// Using an Ajax request to get the JSON, then pass the data through renderTweet as an async
+const loadTweets = () => {
+  $.ajax('/tweets', {method: 'GET'})
+    .done((data) => {
+      console.log('rendering tweets from database');
+      renderTweets(data);
+    })
+    .fail((err) => {
+      console.log('Error', err);
+    })
 };
 
-const escape = function(str) {
+// Prevent an XSS attack
+const escape = (str) => {
   let div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
 
+// Tweet error codes
 const newTweetError = (message) => {
-  $('#new-tweet-err-msg').text(message);
-  $('#new-tweet-err').show();
-  $('#tweet-text').focus();
+  if (!message) {
+    $('#new-tweet-err').hide();
+  } else {
+    $('#new-tweet-err-msg').text(message);
+    $('#new-tweet-err').show();
+    $('#tweet-text').focus();
+  }
 };
 
 const closeError = () => {
@@ -79,30 +81,34 @@ const toggleCreateTweet = () => {
   $('#tweet-text').focus();
 };
 
-  $(document).ready(function() {
+$(document).ready(function() {
 
-    $('nav #compose-tweet-btn').click(function() {
-      toggleCreateTweet();
-    });
-
-    loadTweet();
-
-    $('.submit-and-display-button').submit(function(event) {
-      event.preventDefault();
-      const tweetData = $(this).serialize();
-      const charCount = Number($('output.counter').val());
-      if (charCount === 140) {
-        newTweetError('Cannot submit an empty tweet!');
-        return;
-      } else if (charCount < 0) {
-        newTweetError('Tweet is too long!');
-        return;
-      }
-
-      $.post('/tweets/', tweetData).then(() => {
-        loadNewTweet();
-        closeError();
-      });
-    });
-
+  // Clicking on header will show/hide the tweet submission form
+  $('nav #compose-tweet-btn').click(function() {
+    toggleCreateTweet();
   });
+
+  // Loads tweets from database on page load
+  loadTweets();
+
+  // Preventing default behaviour on form submission
+  $('form').submit(function(event) {
+    event.preventDefault();
+    const tweetData = $(this).serialize();
+    const charCount = Number($('output.counter').val());
+    // If trying to submit an empty tweet
+    if (charCount === 140) {
+      newTweetError('Cannot submit an empty tweet!');
+      return;
+    // If trying to submit a tweet that exceeds the character limit
+    } else if (charCount < 0) {
+      newTweetError('Tweet is too long!');
+      return;
+    }
+    // Happy path
+    $.post('/tweets', tweetData).then(() => {
+      loadTweets();
+      closeError();
+    });
+  });
+});
